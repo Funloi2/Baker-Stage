@@ -1,0 +1,107 @@
+<h1 mat-dialog-title> Add Company</h1>
+<div mat-dialog-content>
+
+<!--  Form -->
+  <form [formGroup]="companyForm">
+    <!--  Company TAN and BRN Input-->
+    <div class="row">
+      <!--      Company BRN Input -->
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Company BRN</mat-label>
+          <input formControlName="BRN" matInput placeholder="BRN" required>
+          <mat-hint>Enter 8 digit BRN</mat-hint>
+          <mat-error *ngIf="BRN.invalid">{{getErrorMessageBRN()}}</mat-error>
+        </mat-form-field>
+      </div>
+      <!--      Company TAN Input-->
+      <div class="col-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Company TAN</mat-label>
+          <input matInput type="number" formControlName="TAN" placeholder="TAN"  required>
+          <mat-error *ngIf="TAN.invalid">{{getErrorMessageTAN()}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!--  Company name Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Company Name</mat-label>
+      <input formControlName="name" matInput placeholder="Name">
+      <mat-error *ngIf="name.invalid">{{getErrorMessageName()}}</mat-error>
+    </mat-form-field>
+
+    <!--  Company email Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Enter company email</mat-label>
+      <input formControlName="email" matInput placeholder="baker@tilly.com"  required>
+      <mat-icon matSuffix>alternate_email</mat-icon>
+      <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
+    </mat-form-field>
+
+    <!--  Company Phone number Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Phone number</mat-label>
+      <input formControlName="phone" matInput placeholder="1234 5678" type="number" required>
+      <mat-error *ngIf="phone.invalid">{{getErrorMessagePhone()}}</mat-error>
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+    <!--  Company Sector Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Sector</mat-label>
+      <mat-select formControlName="sector"  required>
+        <mat-option *ngFor="let sector of sectors" [value]="sector.name">{{sector.name}} <mat-icon>{{sector.icon}} </mat-icon></mat-option>
+      </mat-select>
+      <mat-error *ngIf="sector.invalid">{{getErrorMessageSector()}}</mat-error>
+    </mat-form-field>
+
+    <!-- Company type of activity Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Type of activity</mat-label>
+      <mat-select formControlName="typeOfActivity" required>
+        <mat-option *ngFor="let activity of activities" [value]="activity.name">{{activity.name}} </mat-option>
+      </mat-select>
+      <mat-error *ngIf="typeOfActivity.invalid">{{getErrorMessageTypeOfActivity()}}</mat-error>
+    </mat-form-field>
+
+    <!-- Company Detail of activity Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Detail of activity</mat-label>
+      <mat-select formControlName="DetailOfActivity"  required>
+        <mat-option *ngFor="let detail of activityDetails" [value]="detail.name">{{detail.name}} </mat-option>
+      </mat-select>
+      <mat-error *ngIf="DetailOfActivity.invalid">{{getErrorMessageDetailOfActivity()}}</mat-error>
+    </mat-form-field>
+
+    <!--  Company Closing date of accounts Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Closing date of account</mat-label>
+      <input matInput  formControlName="date" [matDatepicker]="picker">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!--  Company submitting currency-->
+    <mat-form-field appearance="fill">
+      <mat-label>Submitting currency <mat-icon matSuffix>attach_money</mat-icon></mat-label>
+      <mat-select formControlName="currency"  required>
+        <mat-option *ngFor="let currency of currencies" [value]="currency.code">{{currency.code}} {{currency.name}} </mat-option>
+      </mat-select>
+      <mat-error *ngIf="currency.invalid">{{getErrorMessageCurrency()}}</mat-error>
+    </mat-form-field>
+
+    <!--  Company Main Business of activity Input-->
+    <mat-form-field appearance="fill">
+      <mat-label>Main Business of activity</mat-label>
+      <input required formControlName="mainBusinessOfActivity" matInput placeholder="Main Business of activity">
+      <mat-error *ngIf="mainBusinessOfActivity.invalid">{{getErrorMessageMainBusinessOfActivity()}}</mat-error>
+    </mat-form-field>
+  </form>
+
+<!--  Button -->
+<mat-dialog-actions [align]="'end'">
+  <button mat-raised-button color="primary" mat-dialog-close="" (click)="addCompany()">{{actionBtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close="">Cancel</button>
+</mat-dialog-actions>
+</div>

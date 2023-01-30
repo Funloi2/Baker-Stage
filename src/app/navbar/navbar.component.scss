@@ -1,0 +1,20 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.horizontal-list {
+  list-style-type: none; /* remove bullet points */
+  display: flex; /* display items in a row */
+  flex-wrap: nowrap; /* prevent items from wrapping to next line */
+}
+.horizontal-list > li {
+  padding: 0 1em; /* add padding between items */
+}
+.horizontal-list > li:first-child {
+  padding-left: 0; /* remove padding from first item */
+}
+.horizontal-list > li > button {
+  margin-top: 13px; /* add margin to button */
+  color: black; /* change link color */
+  font-size: 1em; /* sets the font size to 1.2 times the size of the parent element */
+}
+

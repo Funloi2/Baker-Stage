@@ -1,0 +1,70 @@
+{
+  "companyList": [
+    {
+      "name": "fredsafdsa",
+      "email": "thefunloi11@Gmail.com",
+      "phone": 123456789,
+      "sector": "Primary Sector (Raw Materials)",
+      "typeOfActivity": "Sales and Business Development",
+      "DetailOfActivity": "Auto and Truck Manufacturers",
+      "BRN": "dasf",
+      "TAN": 123423,
+      "date": "2023-01-06T20:00:00.000Z",
+      "currency": "INR",
+      "mainBusinessOfActivity": "gregfd",
+      "id": 1
+    },
+    {
+      "name": "fredsafdsa",
+      "email": "thefunloi11@Gmail.com",
+      "phone": 123456789,
+      "sector": "Secondary Sector (Manufacturing)",
+      "typeOfActivity": "Operations and Logistics",
+      "DetailOfActivity": "Apparel and Other Textile Products",
+      "BRN": "esdfdadfdsa",
+      "TAN": 123467896523132,
+      "date": "2023-01-18T20:00:00.000Z",
+      "currency": "AUD",
+      "mainBusinessOfActivity": "fredsafdsa",
+      "id": 2
+    },
+    {
+      "name": "dsa",
+      "email": "dw@gmail.com",
+      "phone": 32143215,
+      "sector": "Primary Sector (Raw Materials)",
+      "typeOfActivity": "Sales and Business Development",
+      "DetailOfActivity": "Advertising",
+      "BRN": "fedsafds",
+      "TAN": 243214,
+      "date": "2023-01-19T20:00:00.000Z",
+      "currency": "INR",
+      "mainBusinessOfActivity": "sadas",
+      "id": 3
+    },
+    {
+      "name": "name",
+      "email": "name@gmail.com",
+      "phone": 12345,
+      "sector": "Secondary Sector (Manufacturing)",
+      "typeOfActivity": "Sales and Business Development",
+      "DetailOfActivity": "Air Transportation",
+      "BRN": "brn",
+      "TAN": 120,
+      "date": "2023-01-10T20:00:00.000Z",
+      "currency": "INR",
+      "mainBusinessOfActivity": "kmain",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
