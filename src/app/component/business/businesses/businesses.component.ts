@@ -5,6 +5,15 @@ import {ApiService} from "../../../services/api.service";
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Component({
   selector: 'app-businesses',
@@ -13,8 +22,8 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class BusinessesComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'email', 'phone', 'sector', 'typeOfActivity', 'DetailOfActivity', 'BRN', 'TAN',
-    'date', 'currency', 'mainBusinessOfActivity', "action"];
+  displayedColumns: string[] = ['name', 'email', 'phone', 'sector', 'typeOfActivity', 'detailOfActivity', 'BRN', 'TAN',
+    'dateOfClosing', 'currency', 'mainBusinessOfActivity', "action"];
   dataSource !: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator !: MatPaginator;
@@ -45,6 +54,7 @@ export class BusinessesComponent implements OnInit {
     });
   }
 
+  // Filter the table
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -54,6 +64,7 @@ export class BusinessesComponent implements OnInit {
     }
   }
 
+  // Delete a company by id
   deleteCompany(id: number) {
     this.api.deleteCompany(id)
       .subscribe({
@@ -67,8 +78,9 @@ export class BusinessesComponent implements OnInit {
       })
   }
 
+  //get all companies
   getAllCompanies() {
-    this.api.getCompany()
+    this.api.getCompany(httpOptions)
       .subscribe({
         next: (res) => {
           this.dataSource = new MatTableDataSource(res);

@@ -71,13 +71,13 @@
       <mat-select formControlName="DetailOfActivity"  required>
         <mat-option *ngFor="let detail of activityDetails" [value]="detail.name">{{detail.name}} </mat-option>
       </mat-select>
-      <mat-error *ngIf="DetailOfActivity.invalid">{{getErrorMessageDetailOfActivity()}}</mat-error>
+      <mat-error *ngIf="detailOfActivity.invalid">{{getErrorMessageDetailOfActivity()}}</mat-error>
     </mat-form-field>
 
     <!--  Company Closing date of accounts Input-->
     <mat-form-field appearance="fill">
       <mat-label>Closing date of account</mat-label>
-      <input matInput  formControlName="date" [matDatepicker]="picker">
+      <input matInput formControlName="dateOfClosing" [matDatepicker]="picker">
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

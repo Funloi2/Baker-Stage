@@ -46,9 +46,9 @@
     </ng-container>
 
     <!-- Detail of activity Column HIDDEN -->
-    <ng-container HIDDEN matColumnDef="DetailOfActivity">
+    <ng-container HIDDEN matColumnDef="detailOfActivity">
       <th mat-header-cell HIDDEN *matHeaderCellDef mat-sort-header> Detail of activity </th>
-      <td mat-cell HIDDEN *matCellDef="let row"> {{row.DetailOfActivity}} </td>
+      <td mat-cell HIDDEN *matCellDef="let row"> {{row.detailOfActivity}} </td>
     </ng-container>
 
     <!-- BRN Column -->
@@ -64,9 +64,9 @@
     </ng-container>
 
      Date of closing account Column HIDDEN
-    <ng-container HIDDEN matColumnDef="date">
+    <ng-container HIDDEN matColumnDef="dateOfClosing">
       <th mat-header-cell HIDDEN *matHeaderCellDef mat-sort-header> Date of closing of account </th>
-      <td mat-cell HIDDEN *matCellDef="let row"> {{row.date | date }} </td>
+      <td mat-cell HIDDEN *matCellDef="let row"> {{row.dateOfClosing | date }} </td>
     </ng-container>
 
     <!-- currency Column HIDDEN -->

@@ -2,7 +2,15 @@ import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import {ApiService} from "../../../services/api.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Component({
   selector: 'app-dialog',
@@ -10,6 +18,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./dialog.component.scss']
 })
 export class DialogComponent {
+
 
   //Initialize the form
   companyForm !: FormGroup;
@@ -29,10 +38,10 @@ export class DialogComponent {
       phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(8)]],
       sector: ['', Validators.required],
       typeOfActivity: ['', Validators.required],
-      DetailOfActivity: ['', Validators.required],
+      detailOfActivity: ['', Validators.required],
       BRN: ['', Validators.required],
       TAN: ['',[Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
-      date: ['', Validators.required],
+      dateOfClosing: ['', Validators.required],
       currency: ['', Validators.required],
       mainBusinessOfActivity: ['', Validators.required],
     });
@@ -43,10 +52,10 @@ export class DialogComponent {
       this.companyForm.controls['phone'].setValue(this.editData.phone);
       this.companyForm.controls['sector'].setValue(this.editData.sector);
       this.companyForm.controls['typeOfActivity'].setValue(this.editData.typeOfActivity);
-      this.companyForm.controls['DetailOfActivity'].setValue(this.editData.DetailOfActivity);
+      this.companyForm.controls['detailOfActivity'].setValue(this.editData.detailOfActivity);
       this.companyForm.controls['BRN'].setValue(this.editData.BRN);
       this.companyForm.controls['TAN'].setValue(this.editData.TAN);
-      this.companyForm.controls['date'].setValue(this.editData.date);
+      this.companyForm.controls['dateOfClosing'].setValue(this.editData.dateOfClosing);
       this.companyForm.controls['currency'].setValue(this.editData.currency);
       this.companyForm.controls['mainBusinessOfActivity'].setValue(this.editData.mainBusinessOfActivity);
     }
@@ -138,10 +147,10 @@ export class DialogComponent {
   ];
 
   //Verify Detail of acitvity
-  DetailOfActivity = new FormControl('', [Validators.required]);
+  detailOfActivity = new FormControl('', [Validators.required]);
   getErrorMessageDetailOfActivity() {
-    return this.DetailOfActivity.hasError('required') ? 'You must enter a value' :
-      this.DetailOfActivity.hasError('type') ? 'Not a valid type' :
+    return this.detailOfActivity.hasError('required') ? 'You must enter a value' :
+      this.detailOfActivity.hasError('type') ? 'Not a valid type' :
         '';
   }
   activityDetails = [
@@ -196,10 +205,10 @@ export class DialogComponent {
   }
 
   //Verify date for closing of account
-  date = new FormControl('', [Validators.required]);
+  dateOfClosing = new FormControl('', [Validators.required]);
   getErrorMessageDate() {
-    return this.date.hasError('required') ? 'You must enter a value' :
-      this.date.hasError('date') ? 'Not a valid date' :
+    return this.dateOfClosing.hasError('required') ? 'You must enter a value' :
+      this.dateOfClosing.hasError('dateOfClosing') ? 'Not a valid dateOfClosing' :
         '';
   }
 
@@ -259,10 +268,10 @@ export class DialogComponent {
   addCompany() {
     if(!this.editData){
       if(this.companyForm.valid){
-        this.api.postCompany(this.companyForm.value)
+        this.api.postCompany(this.companyForm.value, httpOptions)
           .subscribe({
             next:(res) => {
-              alert("Company added successfully"+this.phone.value?.length);
+              alert("Company added successfully");
 
             },
             error:(err) => {
@@ -280,7 +289,7 @@ export class DialogComponent {
 
 
   updateCompany(){
-    this.api.updateCompany(this.companyForm.value, this.editData.id)
+    this.api.updateCompany(this.companyForm.value, this.editData.id, httpOptions)
       .subscribe({
         next: (res) => {
           alert("Company updated successfully");
